@@ -1,4 +1,4 @@
-# Hiding-Secrets
+# Hiding Secrets
 
 Acest proiect în Python implementează o metodă de steganografie și compresie de imagine, folosind algoritmul AMBTC (Absolute Moment Block Truncation Coding) pentru comprimarea unei imagini grayscale și ulterior incapsularea unui mesaj secret direct în blocurile imaginii.
 
@@ -12,8 +12,9 @@ Proiectul urmează trei etape principale:
 
 Imaginea inițială este în format RGB, fiecare pixel având 24 de biți (8 pentru roșu, 8 pentru verde, 8 pentru albastru). <br>
 Noi o sa pornim de la aceasta poza, numita "wolf.jpg". <br><br>
-<img width="448" height="448" alt="image" src=https://github.com/user-attachments/assets/8db52a35-a1ed-4592-9fa6-dfe58bad171d /> <br>
+<img width="600" height="448" alt="Fig 1" src="https://github.com/user-attachments/assets/9cfe6d79-4435-4a61-be17-c552c9da2183" /> <br>
 Fig 1. Imaginea originala RGB<br><br>
+
 Dupa cum se poate observa are o dimensiune de 64x64. <br>
 Putem sa extragem valorile R,G si B din fiecare pixel intr-un tabel sau fisier txt. <br>
 Acest tabel ar avea o forma de 64 linii si 64x3 coloane, asadar nu este un format ideal pentru problema noastra. <br><br>
@@ -26,13 +27,13 @@ Rezultatul este o imagine de 64×64 pixeli în tonuri de gri. <br>
 Acum putem sa extragem o singura valoare pentru fiecare pixel, adica putem sa afisam valorile sub forma unei matrice de 64x64. <br>
 
 Dupa aplicarea algoritmului de Grayscale obtinem imaginea: <br><br>
-<img width="448" height="448" alt="image" src="https://github.com/user-attachments/assets/32b49789-db8b-4729-902b-689e9dbfe235" /> <br>
+<img width="600" height="448" alt="Fig 2" src="https://github.com/user-attachments/assets/ebda3b9e-b536-439a-9abb-fc4e5d45d889" /> <br>
 Fig 2. Imaginea transformata in Grayscale<br><br>
 
 Hai sa vedem si valorile efective pentru fiecare pixel. <br>
 Mai jos am extras matricea de 16x16 din coltul stanga sus pentru a face o comparatie intre varianta vizuala si cea numerica pentru verificare. <br>
 Valorile mari tind spre alb, in timp ce cele mici tind spre negru. <br><br>
-<img width="600" height="400" alt="image" src="https://github.com/user-attachments/assets/43891e27-94a1-41af-ba09-9a8207c730fe" /> <br>
+<img width="600" height="400" alt="Fig 3" src="https://github.com/user-attachments/assets/b95f737c-9f5f-45db-a59b-aab56035dbe5" /> <br>
 Fig 3. Valoarea pixelilor imaginii Grayscale<br><br>
 
 ### 2️⃣ Compresia imaginii cu metoda AMBTC
@@ -45,12 +46,12 @@ Algoritmul AMBTC (Absolute Moment Block Truncation Coding) împarte imaginea gra
 Pentru fiecare astfel de bloc se gasesc două niveluri de intensitate: Lm și Hm, adica low mean values si high mean values. <br>
 
 Pentru inceput sa vedem cum ar atata blocurile 4x4 si ce valori au pixelii. <br>
-<img width="700" height="500" alt="Grayscale_4x4" src="https://github.com/user-attachments/assets/a8c058fd-8071-4293-b8b8-53b8b89201a9" /> <br>
+<img width="600" height="448" alt="Fig 4" src="https://github.com/user-attachments/assets/b8667966-a7e2-4491-a35d-7671a8ed6907" /> <br>
 Fig 4. Sectionarea imaginii Grayscale in blocuri 4x4<br><br>
 
 Acum hai sa analizam si valorile numerice ale pixelilor. <br>
 Se poate observa cum tonurile de gri confirma valoarea numerica a pixelilor. <br>
-<img width="600" height="400" alt="image" src="https://github.com/user-attachments/assets/81c8e8b1-474f-4852-909c-f506c638e975" /> <br>
+<img width="600" height="400" alt="Fig 5" src="https://github.com/user-attachments/assets/10c3771a-d889-4b4b-9c4b-804e97886add" /> <br>
 Fig 5. Sectionarea matricei de pixeli in blocuri 4x4<br><br>
 
 Acum hai sa aplicam comprimarea pentru primul bloc 4x4. <br>
@@ -107,19 +108,19 @@ Diferenta vizuala intre 145 si 146 sau 192 si 193 este infima si nu reprezinta s
 
 Aplicam pentru fiecare bloc 4x4 ceea ce am explicat mai sus. <br>
 Astfel ajungem la imaginea comprimata finala. <br>
-<img width="448" height="448" alt="image" src="https://github.com/user-attachments/assets/3b567aaf-8d6c-47e8-8c55-33ed635b60fe" /> <br>
+<img width="600" height="448" alt="Fig 6" src="https://github.com/user-attachments/assets/3f3d3f0f-6915-40a2-af5a-91884d81ad18" /> <br>
 Fig 6. Imaginea comprimata prin tehnica AMBTC<br><br>
 
 Acum hai sa vedem si valorile numerice pentru aceasta imagine. <br>
-<img width="600" height="400" alt="image" src="https://github.com/user-attachments/assets/46916145-5018-4b52-b5c4-f77e8c9175ac" /> <br><br>
+<img width="600" height="400" alt="Fig 7" src="https://github.com/user-attachments/assets/a3f2802b-a3a0-4e4f-9b6d-e90238979faa" /> <br>
 Fig 7. Matricea de pixeli a imaginii comprimate<br><br>
 
 Sa tragem si limitele blocurilor pentru o imagine mai clara. <br>
-<img width="700" height="500" alt="Comprimat_4x4" src="https://github.com/user-attachments/assets/4caf25f6-4f37-4507-8a19-bbc9e2e0079c" /> <br>
+<img width="600" height="448" alt="Fig 8" src="https://github.com/user-attachments/assets/6239e997-8e38-4c5d-9aa6-2c920c6149d0" /> <br>
 Fig 8. Imaginea comprimata impartita in blocuri<br><br>
 
 Iar in varianta numerica avem: <br>
-<img width="600" height="400" alt="Img2" src="https://github.com/user-attachments/assets/fd8aa482-81ab-4f18-81e0-6cf24d517aeb" /> <br>
+<img width="600" height="400" alt="Fig 9" src="https://github.com/user-attachments/assets/bb6ecaa1-5a82-49b9-be2a-018f18651b17" /> <br>
 Fig 9. Matricea de pixeli impartita in blocuri<br><br>
 
 Observam cum fiecare bloc 4x4 are doar 2 valori. Acest lucru se oserva si cu ochiul liber. <br>
@@ -172,7 +173,7 @@ Usor, daca un bloc e gol, dar are Hm - Lm >= 3, este evident ca acel bloc trebui
 Pentru a intelege mai usor hai sa codificam mesajul "SALUT". <br>
 
 Pentru asta trebuie neaparat sa avem tabelul ASCII: <br>
-<img width="700" height=" 500" alt="image" src="https://github.com/user-attachments/assets/347f4967-9e27-4434-ad7d-47ec50bb47e2" /> <br>
+<img width="700" height=" 500" alt="Fig 10" src="https://github.com/user-attachments/assets/907119be-9d46-450a-95c6-4f5345b7d61e" /> <br>
 Fig 10. Tabelul ASCII<br><br>
 
 Bun, hai sa o luam pas cu pas: <br>
@@ -273,11 +274,11 @@ Doar aceste blocuri vor fi codificate. Mesajul s-a terminat, asa ca restul blocu
 Sirul Ternar cu padding este: [[0, 0, 0, 0, 1, 0, 0, 2, 0, 2, 0, 1, 0, 1], [0, 0, 0, 0, 0, 2, 2, 2, 2, 1, 0, 2, 0, 2], [0, 0, 0, 0, 1, 0, 0, 2, 1, 1, 2, 1, 2, 2]] <br>
 
 Imaginea codificata este: <br>
-<img width="600" height="448" alt="Figure_5" src="https://github.com/user-attachments/assets/bccace19-e348-4bac-ae7e-0bc2eb37c8ff" /> <br>
+<img width="600" height="448" alt="Fig 11" src="https://github.com/user-attachments/assets/6667fe86-7433-45f1-a571-8fe96148b77e" /> <br>
 Fig 11. Imaginea rezultata in urma codificarii mesajului secret<br><br>
 
 Iar numeric vorbind avem: <br>
-<img width="600" height="400" alt="Img3" src="https://github.com/user-attachments/assets/d749d655-84ab-4d74-bc43-fcd0a276a5d7" /> <br>
+<img width="600" height="400" alt="Fig 12" src="https://github.com/user-attachments/assets/29a647a0-072b-4572-ab1b-52604cc2dfb6" /> <br>
 Fig 12. Matricea de pixeli dupa codificare <br>
 
 
@@ -287,13 +288,13 @@ Acum urmeaza sa procedam si in sens invers. <br>
 O sa prezint o imagine care are un mesaj criptat, dar nu stim care. <br>
 Pas cu pas o sa descifram ceea ce este codat acolo. <br>
 Avem imaginea cu mesajul codat in pixelii sai: <br>
-<img width="600" height="400" alt="FIG_Mesaj Secret" src="https://github.com/user-attachments/assets/23d298e2-84f1-40ea-a4e3-a8f23d4184e6" /> <br>
+<img width="600" height="400" alt="Fig 13" src="https://github.com/user-attachments/assets/66b29492-540b-4f21-be4b-6a1f126635bf" /> <br>
 Fig 13. Imaginea de la care pornim pt decodificare<br><br>
 
 Diferenta de intensitate a pixelilor este imposibil de vazut cu ochiul liber. <br>
 
 Hai sa vedem si numeric <br>
-<img width="800" height="250" alt="MATRIX_Mesaj Secret" src="https://github.com/user-attachments/assets/a26af412-389f-48f6-957c-91c6ad2492fc" /> <br>
+<img width="800" height="250" alt="Fig 14" src="https://github.com/user-attachments/assets/a1a60514-ca44-4e2a-9921-932dbdd9fcb1" /> <br>
 Fig 14. Primele 2 linii din matricea de pixeli<br><br>
 
 Urmeaza sa analizam imaginea in blocuri de 4x4 si sa descifram mesajul secret. <br>
